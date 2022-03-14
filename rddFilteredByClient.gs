@@ -1,6 +1,6 @@
   function rddFilteredByClient(ss, client, startDate, endDate) {
 
-    var rddArray = ss.getSheetByName("RDD2021").getDataRange().getValues();
+    var rddArray = ss.getSheetByName("GW2021_Trike").getDataRange().getValues();
     if (rddArray[0][1] == "Rider Name") {
       rddArray.shift();
     }

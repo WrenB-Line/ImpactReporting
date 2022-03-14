@@ -1,21 +1,22 @@
 function impactReport() {
-  var client = "Portland Roasting";
+  var client = "Alchemist's Jam";
   var clientAddress = "1140 SE 7th Ave, Portland, OR 97214";
   var startDate = new Date("1/1/2021");
   var endDate = new Date("1/1/2022");
 
 
   // This calles the spreadsheet containing account addresses using the URL
-  var ss = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1vgnSQHrOf46p9-yzRs1xc5YR20WTd6u0Rjm63J1rpqU/edit#gid=852513261");
+  var ss = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1G6BtccXlpiW8EDcR3U2zmCoiphmu6xdK86o-PzGg92I/edit#gid=930412423");
 
   // Sheet containing account address book transformed to an array  
-  var accountAddressBookArray = ss.getSheetByName("Delivery Accounts").getDataRange().getValues();
+  var accountAddressBookArray = ss.getSheetByName("DeliveryAccounts").getDataRange().getValues();
 
   // 2020 array filtered by client (see rddFilterByClient.gs)
   var rddClientFiltered = rddFilteredByClient(ss, client, startDate, endDate);
 
   // Function creates new sheet and names the sheet "client name" + "Impact Report"
-  ss.insertSheet().setName(client + " Impact Report");
+  var newSS = SpreadsheetApp.create(client + "Impact Report")
+  //ss.insertSheet().setName(client + " Impact Report");
 
   var listOfDays = getListOfDays(rddClientFiltered);
 
